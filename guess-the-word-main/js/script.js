@@ -21,3 +21,10 @@ const placeholder = function (word) {
 
 placeholder(word);
 
+//Add eventlistener for the button
+guessLetterButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    const guess = letterInput.value;
+    console.log(guess);
+    letterInput.value = "";
+  });
