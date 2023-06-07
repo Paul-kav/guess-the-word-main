@@ -24,7 +24,25 @@ placeholder(word);
 //Add eventlistener for the button
 guessLetterButton.addEventListener("click", function (e) {
     e.preventDefault();
+    message.innerText = "";
     const guess = letterInput.value;
     console.log(guess);
     letterInput.value = "";
+    validateInput(input);
+    const result = guessedLetter;
+    conslole.log(result);
   });
+
+  //validating the player's input
+  const validateInput = function(input){
+    const acceptedLetter = /[a-zA-Z]/;
+    if (input === 0){
+        message.innerText = "Enter a letter";
+    } else if (input > 1){
+        message.innerText = "Please enter one letter";
+    } else if (input.match(acceptedLetter)){
+        message.innerText = "Did you enter a number?";
+    }
+    else message.innertext = "yay, yay";
+  };
+  return input;
