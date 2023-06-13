@@ -27,11 +27,12 @@ guessLetterButton.addEventListener("click", function (e) {
     e.preventDefault();
     message.innerText = "";
     const guess = letterInput.value;
-    console.log(guess);
-    letterInput.value = "";
-    const goodGuess = validateInput(guess);
-    //const result = guessedLetter;
-    //conslole.log(result);
+    const goodGuess = validateInput(guess);//make sure input is a single letter
+    if (goodGuess){
+      makeGuess(guess);//we have got a letter, let's guess
+    }
+    letterInput = "";
+   
   });
 
   //validating the player's input
@@ -51,12 +52,12 @@ guessLetterButton.addEventListener("click", function (e) {
   
 
   //capturing input
-  const makeGuess = function(guess){
-    guess = guess.toUpperCase();
-    if (guessedLetters.includes(guess)){
-      message.innertext = "You already guessed that letter."
-    } else {
-      guessedLetters.push(guess);
-      console.log(guessedLetters);
-    }
-  };
+  function makeGuess(guess) {
+  guess = guess.toUpperCase();
+  if (guessedLetters.includes(guess)) {
+    message.innerText = "You already guessed that letter. Try again.";
+  } else {
+    guessedLetters.push(guess);
+    console.log(guessedLetters);
+  }
+}
